@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +13,9 @@ export class UserComponent {
   @Input({ required: true }) name!: string;
 
   // custom select event
-  @Output() select = new EventEmitter();
+  // @Output() select = new EventEmitter();
+  select = output<string>();
+  userName = output<string>();
 
   // avatar = input.required<string>();
   // name = input.required<string>();
@@ -28,5 +30,6 @@ export class UserComponent {
 
   onSelectUser() {
     this.select.emit(this.id);
+    this.userName.emit(this.name);
   }
 }
