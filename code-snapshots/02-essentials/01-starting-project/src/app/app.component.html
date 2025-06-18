@@ -6,7 +6,11 @@
     <!-- @for (user of users; track user.id) { -->
     <!-- Angular < 17 -->
     <li *ngFor="let user of users">
-      <app-user [user]="user" (select)="onSelectUser($event)" />
+      <app-user
+        [selected]="user.id === selectedUserId"
+        [user]="user"
+        (select)="onSelectUser($event)"
+      />
     </li>
     <!-- } -->
   </ul>
